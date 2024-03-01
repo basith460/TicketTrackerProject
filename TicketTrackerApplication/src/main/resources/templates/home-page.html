@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="lb">
+	<strong> Tracker Application </strong>
+	<a href="showtickets">Tickets</a>
+	<a href="addticket">New Tickets</a> 
+		</div>	
+	
+	<div class="ishow">
+	<h1>List Of tickets</h1>
+	<form action="serchvalue" method="post">
+	<input type="text" name="title" placeholder="Enter ticket title"/>
+	<button type="submit">Search </button></h2>
+	</form>
+	<br>
+
+	<table border="2">
+		<tr style="background-color: black; color: white;">
+			<th>Id</th>
+			<th>Ticket Title</th>
+			<th>Ticket Short Description</th>
+			<th>Ticket Created On</th>
+			<th>  Actions   </th>
+		</tr>
+		<tr  th:each="temp: ${ticket}">
+			<td th:text="${temp.id}"></td>
+			<td th:text="${temp.ticketTitle}"></td>
+			<td th:text="${temp.description}"></td>
+			<td th:text="${temp.createdOn}"></td>
+			<td><a th:href="@{update-ticket(id=${temp.id})}" class="my-link"> Edit &#9997;</a> 
+			<a th:href="@{delete-ticket(id=${temp.id})}" class="yel">Delete &#9249; </a>
+			<a th:href="@{view-ticket(id=${temp.id})}" class="bl" >View &#10154;</a>
+			</td>
+		</tr>
+	</table>
+	</div>
+</body>
+</html>
+
+<style>
+	.lb{
+		background-color:midnightblue;	
+		color: white;
+		 padding: 8px 6px;
+	}
+	.lb strong{
+		font-size: 28px;
+        
+	   
+	}
+	.lb a{
+		padding: 11px;
+		padding-top: 15px;
+		font-size: 20px ;
+		color: white;
+		background-color: cornflowerblue;
+	}
+	.lb a:hover{
+		color: blue;
+	}
+	
+	.ishow{
+		justify-content: center;
+		padding-left: 10%;
+	}
+	
+	
+	body{
+		margin:0;
+		padding:0;
+		background-color: powderblue;
+	}
+	.yel{
+		color:white; /* Link color */
+        background-color:red;
+        text-decoration: none;
+        margin-right: 10px;
+        font-weight: bold;
+        border: none;
+        border-radius: 3px;
+        padding: 3px;
+		
+	}
+	.yel:hover{
+		color: blue;
+	}
+	.bl:hover{
+		color: darkblue;
+	}
+	.bl{
+		color:white; /* Link color */
+        background-color:grey;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 4px;
+        padding-top: 5px;
+        margin-top: 0px;
+		
+	}
+	
+	.my-link {
+        color:whitesmoke; /* Link color */
+        background-color: green;
+        text-decoration: none; /* Remove underline */
+        font-weight: bold; /* Bold text */
+        transition: color 0.3s; /* Smooth color transition */
+        margin-right: 10px;
+        padding:3px;
+        display: inline-block;
+    }
+
+    /* Hover effect */
+    .my-link:hover {
+        color: #0056b3; /* Darker color on hover */
+    }
+    
+</style>

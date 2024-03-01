@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<div class="lb">
+		<strong> Tracker Application </strong>
+		<a href="showtickets">Tickets</a>
+		<a href="addticket">New Tickets</a>
+	</div>
+	<div class="align">
+		<h2> Edit/Update Ticket Data  </h2>
+		<form action="updatesave" method="post" />
+		<label>Ticket Id</label><br>
+		<input type="number" name="id" size="50" th:value="${ticket.id}" readonly/>
+		<br><br>
+		<label>Title</label><br>
+		<input type="text" name="title" size="50" th:value="${ticket.ticketTitle}" />
+		<br><br>
+		<label>Short description</label><br>
+		<input type="text" name="description" size="50" th:value="${ticket.description}" />
+		<br><br>
+
+		<label>Content</label><br>
+		<textarea name="content" rows="4" cols="49" th:text="${ticket.content}" /> </textarea>
+
+		<br><br>
+		<button type="submit">Update</button>
+		</form>
+	</div>
+
+</body>
+
+</html>
+<style>
+.align{
+		
+		text-align: center;
+		border: 2px solid rgb(0, 64, 128);
+		margin: 0 auto; /* This centers the content horizontally */
+        width: 30%; /* Adjust width as needed */
+     	justify-content: center;
+     	align-items: center;
+        padding: 10px;
+        padding-top: 2px;
+        margin-top: 17px;
+	}
+	
+	.align label{
+		font-size: 15px;
+		
+	}
+	.align button{
+		margin-right: 72%;
+		padding: 3px;
+		color:white;
+		background-color:darkred;
+		cursor: pointer; /* Cursor on hover */
+        box-shadow: 0 4px 6px rgb(255, 128, 255); /* Add shadow */
+		
+	}
+	.align button:hover{
+		color: blue;
+	}
+	.lb{
+		background-color:midnightblue;	
+		color: white;
+		 padding: 8px 6px;
+	}
+	.lb strong{
+		font-size: 28px;
+        
+	   
+	}
+	.lb a{
+		font-size: 20px;
+		margin-right: 10px;
+		color: white;
+	}
+	h2{
+		background-color: orangered;
+		padding: 2px;
+		
+	}
+
+</style>
